@@ -25,7 +25,7 @@ const StatCard: React.FunctionComponent<Props> = ({
           <Typography variant="h5" component="h2">
             {stat}
           </Typography>
-          <Typography color="textSecondary">{description}</Typography>
+          <Typography color="textSecondary" variant="body2">{description}</Typography>
         </CardContent>
       </Card>
     </Grid>

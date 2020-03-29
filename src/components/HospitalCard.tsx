@@ -45,11 +45,11 @@ const StatCard: React.FunctionComponent<Props> = ({ hospitalData }) => {
             {hospitalData.hospital.name}
           </Typography>
 
-          <Typography variant="subtitle1" component="h3">
+          <Typography variant="subtitle1" component="h3" color="textSecondary">
             {hospitalData.hospital.name_si}
           </Typography>
 
-          <Typography variant="subtitle1" component="h3">
+          <Typography variant="subtitle1" component="h3" color="textSecondary">
             {hospitalData.hospital.name_ta}
           </Typography>
 
