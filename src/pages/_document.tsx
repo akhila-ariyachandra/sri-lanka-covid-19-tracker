@@ -30,6 +30,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="icon" type="image/png" href="/virus.png" />
+
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
 
