@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     fontSize: theme.spacing(4),
+    marginLeft: theme.spacing(2),
   },
 }));
 
