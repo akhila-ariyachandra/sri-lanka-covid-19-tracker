@@ -31,4 +31,6 @@ export type hospitalData = {
 export type hospital = {
   id: number;
   name: string;
+  name_si: string;
+  name_ta: string;
 };
