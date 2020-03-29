@@ -7,14 +7,16 @@ import dayjs from "dayjs";
 import HospitalCard from "../components/HospitalCard";
 import Divider from "@material-ui/core/Divider";
 const Link = dynamic(() => import("@material-ui/core/Link"));
+const Graph = dynamic(() => import("../components/Graph"));
 import { NextPage, GetServerSideProps } from "next";
 import { api } from "../lib/api";
-import { apiData } from "../lib/types";
+import { apiData, GraphData } from "../lib/types";
 import { NextSeo } from "next-seo";
 import { makeStyles } from "@material-ui/core/styles";
 
 type Props = {
   data: apiData;
+  graphData: GraphData[];
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Index: NextPage<Props> = ({ data }) => {
+const Index: NextPage<Props> = ({ data, graphData }) => {
   const classes = useStyles();
 
   return (
@@ -90,6 +92,8 @@ const Index: NextPage<Props> = ({ data }) => {
       </Typography>
 
       <Grid container spacing={2}>
+        <Graph data={graphData} />
+
         {data.hospital_data.map((data) => (
           <HospitalCard hospitalData={data} key={data.hospital_id} />
         ))}
@@ -111,9 +115,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       );
     }
 
+    const graphData: GraphData[] = data.hospital_data
+      .map((hospital) => ({
+        name: hospital.hospital.name,
+        value: hospital.treatment_total,
+      }))
+      .filter((data) => data.value !== 0);
+
     return {
       props: {
         data,
+        graphData,
       },
     };
   } catch (error) {

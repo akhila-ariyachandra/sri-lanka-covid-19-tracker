@@ -34,3 +34,8 @@ export type hospital = {
   name_si: string;
   name_ta: string;
 };
+
+export type GraphData = {
+  name: string;
+  value: number;
+};
