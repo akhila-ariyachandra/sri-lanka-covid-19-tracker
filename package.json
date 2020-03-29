@@ -1,0 +1,43 @@
+{
+  "name": "sri-lanka-covid-19-tracker",
+  "version": "1.0.0",
+  "description": "COVID-19 Tracker for Sri Lanka",
+  "main": "package.json",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "analyze": "cross-env ANALYZE=true next build",
+    "start": "next start",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,ts,tsx}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhila-ariyachandra/sri-lanka-covid-19-tracker.git"
+  },
+  "keywords": [
+    "covid-19",
+    "tracker",
+    "sri lanka"
+  ],
+  "author": "Akhila Ariyachandra <akhila_ariyachandra@live.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akhila-ariyachandra/sri-lanka-covid-19-tracker/issues"
+  },
+  "homepage": "https://github.com/akhila-ariyachandra/sri-lanka-covid-19-tracker#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.9.8",
+    "axios": "^0.19.2",
+    "next": "^9.3.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^9.3.2",
+    "@types/node": "^13.9.5",
+    "@types/react": "^16.9.27",
+    "cross-env": "^7.0.2",
+    "prettier": "^2.0.2",
+    "typescript": "^3.8.3"
+  }
+}
