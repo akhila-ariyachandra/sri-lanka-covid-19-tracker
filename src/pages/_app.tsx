@@ -1,8 +1,9 @@
 import React from "react";
 import App from "next/app";
-import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../lib/theme";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { Fonts } from "../lib/fonts";
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -11,6 +12,9 @@ export default class MyApp extends App {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+
+    // Load fonts
+    Fonts();
   }
 
   render() {
