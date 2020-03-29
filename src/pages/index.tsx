@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { NextPage, GetServerSideProps } from "next";
 import { api } from "../lib/api";
 import { apiData } from "../lib/types";
+import { NextSeo } from "next-seo";
 
 type Props = {
   data: apiData;
@@ -12,6 +13,11 @@ type Props = {
 const Index: NextPage<Props> = ({ data }) => {
   return (
     <Layout>
+      <NextSeo
+        title="Sri Lanka COVID-19 Tracker"
+        description="COVID-19 Tracker for Sri Lanka"
+      />
+
       <Grid container spacing={2}>
         <StatCard
           stat={data.local_active_cases}
