@@ -1,10 +1,12 @@
 import Layout from "../components/Layout";
+import dynamic from "next/dynamic";
 import StatCard from "../components/StatCard";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import dayjs from "dayjs";
 import HospitalCard from "../components/HospitalCard";
 import Divider from "@material-ui/core/Divider";
+const Link = dynamic(() => import("@material-ui/core/Link"));
 import { NextPage, GetServerSideProps } from "next";
 import { api } from "../lib/api";
 import { apiData } from "../lib/types";
@@ -42,6 +44,17 @@ const Index: NextPage<Props> = ({ data }) => {
         {`Last updated on ${dayjs(data.update_date_time).format(
           "D MMMM YYYY, h:m a"
         )}`}
+      </Typography>
+
+      <Typography variant="subtitle2" className={classes.text}>
+        All data is from the{" "}
+        <Link
+          href="https://hpb.health.gov.lk/en"
+          target="_blank"
+          rel="noopnoopener noreferrerener"
+        >
+          Health Promotion Bureau
+        </Link>
       </Typography>
 
       <Grid container spacing={2}>

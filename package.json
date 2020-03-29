@@ -27,6 +27,7 @@
   "homepage": "https://github.com/akhila-ariyachandra/sri-lanka-covid-19-tracker#readme",
   "dependencies": {
     "@material-ui/core": "^4.9.8",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "dayjs": "^1.8.23",
     "fontfaceobserver": "^2.1.0",
