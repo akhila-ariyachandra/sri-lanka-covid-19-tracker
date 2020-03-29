@@ -36,6 +36,11 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
       <NextSeo
         title="Sri Lanka COVID-19 Tracker"
         description="COVID-19 Tracker for Sri Lanka"
+        openGraph={{
+          url: "https://slcovid19.now.sh/",
+          title: "Sri Lanka COVID-19 Tracker",
+          description: "COVID-19 Tracker for Sri Lanka",
+        }}
       />
 
       <Typography variant="h3" component="h1" className={classes.text}>
