@@ -52,7 +52,7 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
 
       <Typography variant="h5" component="h3" className={classes.text}>
         {`Last updated on ${dayjs(data.update_date_time).format(
-          "Do MMMM YYYY, h:m a"
+          "Do MMMM YYYY, h:mm a"
         )}`}
       </Typography>
 
