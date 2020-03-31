@@ -4,6 +4,7 @@ import StatCard from "../components/StatCard";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 import HospitalCard from "../components/HospitalCard";
 import Divider from "@material-ui/core/Divider";
 const Link = dynamic(() => import("@material-ui/core/Link"));
@@ -13,6 +14,8 @@ import { api } from "../lib/api";
 import { apiData, GraphData } from "../lib/types";
 import { NextSeo } from "next-seo";
 import { makeStyles } from "@material-ui/core/styles";
+
+dayjs.extend(advancedFormat);
 
 type Props = {
   data: apiData;
@@ -49,7 +52,7 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
 
       <Typography variant="h5" component="h3" className={classes.text}>
         {`Last updated on ${dayjs(data.update_date_time).format(
-          "D MMMM YYYY, h:m a"
+          "Do MMMM YYYY, h:m a"
         )}`}
       </Typography>
 
