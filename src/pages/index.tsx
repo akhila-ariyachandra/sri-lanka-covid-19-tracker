@@ -138,6 +138,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   } catch (error) {
     console.log("> Error fetching data: ", error);
+
+    context.res.statusCode = 503;
+    context.res.statusMessage = "Error fetching API data";
   }
 };
 
