@@ -116,12 +116,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const data = response.data.data as apiData;
 
-    if (context.res) {
-      context.res.setHeader(
-        "Cache-Control",
-        "s-maxage=1, stale-while-revalidate"
-      );
-    }
+    // Uncomment to enable Serverless Pre-Rendering (SPR) - https://zeit.co/blog/serverless-pre-rendering
+    //if (context.res) {
+    //  context.res.setHeader(
+    //    "Cache-Control",
+    //    "s-maxage=1, stale-while-revalidate"
+    //  );
+    //}
 
     const graphData: GraphData[] = data.hospital_data
       .map((hospital) => ({
