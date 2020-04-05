@@ -96,6 +96,44 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
       <Divider className={classes.divider} />
 
       <Typography variant="h4" component="h4" className={classes.text}>
+        Global Cases
+      </Typography>
+
+      <Grid container spacing={2}>
+        <StatCard
+          stat={data.global_new_cases}
+          title="New Cases"
+          description="Confirmed COVID-19 cases reported during last 24 hours"
+        />
+
+        <StatCard
+          stat={data.global_total_cases}
+          title="Total Cases"
+          description="Total global confirmed COVID-19 cases"
+        />
+
+        <StatCard
+          stat={data.global_recovered}
+          title="Recovered Cases"
+          description="Total Global COVID-19 cases who recovered"
+        />
+
+        <StatCard
+          stat={data.global_new_deaths}
+          title="New Deaths"
+          description="Global deaths due to COVID-19 reported during last 24 hours"
+        />
+
+        <StatCard
+          stat={data.global_deaths}
+          title="Deaths"
+          description="Total global deaths due to COVID-19"
+        />
+      </Grid>
+
+      <Divider className={classes.divider} />
+
+      <Typography variant="h4" component="h4" className={classes.text}>
         Hospitals
       </Typography>
 
