@@ -1,4 +1,4 @@
-# [Sri Lanka COVID-19 Tracker](https://slcovid19.now.sh/)
+# [Sri Lanka COVID-19 Tracker](https://sri-lanka-covid-19.now.sh/)
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
