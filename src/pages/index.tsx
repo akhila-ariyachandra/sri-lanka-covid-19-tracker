@@ -56,7 +56,7 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
         )}`}
       </Typography>
 
-      <Typography variant="subtitle2" className={classes.text}>
+      <Typography variant="h6" className={classes.text}>
         All data is from the{" "}
         <Link
           href="https://hpb.health.gov.lk/en"
