@@ -86,6 +86,7 @@ const Layout: React.FunctionComponent = ({ children }) => {
           href="https://github.com/akhila-ariyachandra/sri-lanka-covid-19-tracker"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub Repo"
         >
           <GitHubIcon className={classes.icon} />
         </Link>
