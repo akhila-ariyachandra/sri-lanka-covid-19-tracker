@@ -35,11 +35,6 @@ export default class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
 
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          />
-
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async

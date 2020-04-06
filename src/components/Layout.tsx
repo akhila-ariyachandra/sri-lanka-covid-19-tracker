@@ -3,7 +3,7 @@ import Container from "@material-ui/core/Container";
 import dynamic from "next/dynamic";
 import Typography from "@material-ui/core/Typography";
 const Link = dynamic(() => import("@material-ui/core/Link"));
-import GitHubIcon from "@material-ui/icons/GitHub";
+import { FaGithub } from "react-icons/fa";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -88,7 +88,7 @@ const Layout: React.FunctionComponent = ({ children }) => {
           rel="noopener noreferrer"
           aria-label="GitHub Repo"
         >
-          <GitHubIcon className={classes.icon} />
+          <FaGithub className={classes.icon} />
         </Link>
       </Container>
     </div>
