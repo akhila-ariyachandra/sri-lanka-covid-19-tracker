@@ -1,19 +1,14 @@
 import Layout from "../components/Layout";
 import dynamic from "next/dynamic";
 import StatCard from "../components/StatCard";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import HospitalCard from "../components/HospitalCard";
-import Divider from "@material-ui/core/Divider";
-const Link = dynamic(() => import("@material-ui/core/Link"));
 const Graph = dynamic(() => import("../components/Graph"));
 import { NextPage, GetServerSideProps } from "next";
 import { api } from "../lib/api";
 import { apiData, GraphData } from "../lib/types";
 import { NextSeo } from "next-seo";
-import { makeStyles } from "@material-ui/core/styles";
 
 dayjs.extend(advancedFormat);
 
@@ -22,18 +17,9 @@ type Props = {
   graphData: GraphData[];
 };
 
-const useStyles = makeStyles((theme) => ({
-  divider: {
-    margin: theme.spacing(2, 0),
-  },
-  text: {
-    margin: theme.spacing(2, 0),
-  },
-}));
+const Divider = () => <hr className="my-5 border-solid border-black" />;
 
 const Index: NextPage<Props> = ({ data, graphData }) => {
-  const classes = useStyles();
-
   return (
     <Layout>
       <NextSeo
@@ -46,28 +32,25 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
         }}
       />
 
-      <Typography variant="h3" component="h1" className={classes.text}>
-        Sri Lanka COVID-19 Tracker
-      </Typography>
+      <h1 className="text-5xl text-bold">Sri Lanka COVID-19 Tracker</h1>
 
-      <Typography variant="h5" component="h3" className={classes.text}>
-        {`Last updated on ${dayjs(data.update_date_time).format(
-          "Do MMMM YYYY, h:mm a"
-        )}`}
-      </Typography>
+      <h3 className="text-2xl">{`Last updated on ${dayjs(
+        data.update_date_time
+      ).format("Do MMMM YYYY, h:mm a")}`}</h3>
 
-      <Typography variant="h6" className={classes.text}>
+      <h6 className="text-xl font-medium">
         All data is from the{" "}
-        <Link
+        <a
+          className="underline text-green-800"
           href="https://hpb.health.gov.lk/en"
           target="_blank"
           rel="noopnoopener noreferrerener"
         >
           Health Promotion Bureau
-        </Link>
-      </Typography>
+        </a>
+      </h6>
 
-      <Grid container spacing={2}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <StatCard
           stat={data.local_new_cases}
           title="New Cases"
@@ -91,15 +74,13 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
           title="Deaths"
           description="Total deaths due to COVID-19 reported in Sri Lanka"
         />
-      </Grid>
+      </div>
 
-      <Divider className={classes.divider} />
+      <Divider />
 
-      <Typography variant="h4" component="h4" className={classes.text}>
-        Global Cases
-      </Typography>
+      <h4 className="text-4xl">Global Cases</h4>
 
-      <Grid container spacing={2}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <StatCard
           stat={data.global_new_cases}
           title="New Cases"
@@ -129,21 +110,19 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
           title="Deaths"
           description="Total global deaths due to COVID-19"
         />
-      </Grid>
+      </div>
 
-      <Divider className={classes.divider} />
+      <Divider />
 
-      <Typography variant="h4" component="h4" className={classes.text}>
-        Hospitals
-      </Typography>
+      <h4 className="text-4xl">Hospitals</h4>
 
-      <Grid container spacing={2}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Graph data={graphData} />
 
         {data.hospital_data.map((data) => (
           <HospitalCard hospitalData={data} key={data.hospital_id} />
         ))}
-      </Grid>
+      </div>
     </Layout>
   );
 };
