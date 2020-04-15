@@ -34,11 +34,11 @@ const Layout: React.FunctionComponent = ({ children }) => {
             {`, `}
             <a
               className="underline text-green-800"
-              href="https://material-ui.com/"
+              href="https://tailwindcss.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Material-UI
+              Tailwind CSS
             </a>
             {`, `}
             <a
