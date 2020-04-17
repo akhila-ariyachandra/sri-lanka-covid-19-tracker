@@ -1,95 +1,76 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import dynamic from "next/dynamic";
-import Typography from "@material-ui/core/Typography";
-const Link = dynamic(() => import("@material-ui/core/Link"));
-import GitHubIcon from "@material-ui/icons/GitHub";
-import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    display: "flex",
-    alignItems: "center",
-  },
-  text: {
-    flex: 1,
-  },
-  icon: {
-    fontSize: theme.spacing(4),
-    marginLeft: theme.spacing(2),
-  },
-}));
+import { FaGithub } from "react-icons/fa";
 
 const Layout: React.FunctionComponent = ({ children }) => {
-  const classes = useStyles();
-
   return (
-    <div>
-      <Container maxWidth="md" component="main">
-        {children}
-      </Container>
+    <div className="p-4 bg-gray-200">
+      <main className="container grid grid-cols-1 gap-2">{children}</main>
 
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Box className={classes.text}>
-          <Typography>
+      <footer className="container mt-5 flex items-center text-base text-lg">
+        <div className="flex-1">
+          <p>
             Created by{" "}
-            <Link
+            <a
+              className="underline text-green-800"
               href="https://akhilaariyachandra.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Akhila Ariyachandra
-            </Link>
-          </Typography>
+            </a>
+          </p>
 
-          <Typography>
+          <p>
             © {new Date().getFullYear()}, Built with
             {` `}
-            <Link
+            <a
+              className="underline text-green-800"
               href="https://nextjs.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Next.js
-            </Link>
+            </a>
             {`, `}
-            <Link
-              href="https://material-ui.com/"
+            <a
+              className="underline text-green-800"
+              href="https://tailwindcss.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Material-UI
-            </Link>
+              Tailwind CSS
+            </a>
             {`, `}
-            <Link
+            <a
+              className="underline text-green-800"
               href="http://recharts.org/en-US/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Recharts
-            </Link>
+            </a>
             {`, & `}
-            <Link
+            <a
+              className="underline text-green-800"
               href="https://zeit.co/"
               target="_blank"
               rel="noopener noreferrer"
             >
               ZEIT
-            </Link>
-          </Typography>
-        </Box>
+            </a>
+          </p>
+        </div>
 
-        <Link
+        <a
+          className="text-green-800"
           href="https://github.com/akhila-ariyachandra/sri-lanka-covid-19-tracker"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="GitHub Repo"
         >
-          <GitHubIcon className={classes.icon} />
-        </Link>
-      </Container>
+          <FaGithub className="text-4xl" />
+        </a>
+      </footer>
     </div>
   );
 };

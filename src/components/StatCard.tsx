@@ -1,8 +1,4 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 
 type Props = {
   stat: number;
@@ -16,21 +12,13 @@ const StatCard: React.FunctionComponent<Props> = ({
   description,
 }) => {
   return (
-    <Grid item md={6} sm={12} xs={12}>
-      <Card>
-        <CardContent>
-          <Typography color="textSecondary" gutterBottom>
-            {title}
-          </Typography>
-          <Typography variant="h5" component="h2">
-            {stat}
-          </Typography>
-          <Typography color="textSecondary" variant="body2">
-            {description}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
+    <div className="bg-white rounded-lg shadow-lg p-5 grid grid-cols-1 gap-1">
+      <p className="text-lg text-gray-700 font-light">{title}</p>
+
+      <h2 className="text-2xl">{stat}</h2>
+
+      <p className="text-gray-700">{description}</p>
+    </div>
   );
 };
 
