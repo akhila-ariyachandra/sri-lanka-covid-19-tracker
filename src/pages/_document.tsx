@@ -9,7 +9,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link rel="shortcut icon" type="image/png" href="/virus.png" />
+        </Head>
+
         <body>
           <Main />
           <NextScript />
