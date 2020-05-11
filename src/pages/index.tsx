@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import HospitalCard from "../components/HospitalCard";
 const Graph = dynamic(() => import("../components/Graph"));
-import { NextPage, GetServerSideProps } from "next";
+import { NextPage, GetServerSideProps, GetStaticProps } from "next";
 import { api } from "../lib/api";
 import { apiData, GraphData } from "../lib/types";
 import { NextSeo } from "next-seo";
@@ -127,19 +127,11 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const response = await api.get("/");
 
     const data = response.data.data as apiData;
-
-    // Serverless Pre-Rendering (SPR) - https://zeit.co/blog/serverless-pre-rendering
-    /* if (context.res) {
-      context.res.setHeader(
-        "Cache-Control",
-        "s-maxage=1, stale-while-revalidate"
-      );
-    } */
 
     const graphData: GraphData[] = data.hospital_data
       .map((hospital) => ({
@@ -153,12 +145,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         data,
         graphData,
       },
+      // we will attempt to re-generate the page:
+      // - when a request comes in
+      // - at most once every hour
+      unstable_revalidate: 60 * 60,
     };
   } catch (error) {
     console.log("> Error fetching data: ", error);
-
-    context.res.statusCode = 503;
-    context.res.statusMessage = "Error fetching API data";
   }
 };
 
