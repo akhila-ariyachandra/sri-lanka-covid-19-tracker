@@ -52,11 +52,11 @@ const Layout: React.FunctionComponent = ({ children }) => {
             {`, & `}
             <a
               className="underline text-green-800"
-              href="https://zeit.co/"
+              href="https://vercel.com/home"
               target="_blank"
               rel="noopener noreferrer"
             >
-              ZEIT
+              Vercel
             </a>
           </p>
         </div>

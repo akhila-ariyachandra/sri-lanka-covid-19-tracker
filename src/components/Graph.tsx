@@ -1,7 +1,7 @@
 import React from "react";
 import randomColor from "randomcolor";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
-import { GraphData } from "../lib/types";
+import { GraphData } from "src/lib/types";
 
 type Props = {
   data: GraphData[];

@@ -1,5 +1,5 @@
 import React from "react";
-import { hospitalData } from "../lib/types";
+import { hospitalData } from "src/lib/types";
 
 type RowProps = {
   description: string;

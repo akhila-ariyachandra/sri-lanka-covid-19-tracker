@@ -27,23 +27,23 @@
   "homepage": "https://github.com/akhila-ariyachandra/sri-lanka-covid-19-tracker#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "dayjs": "^1.8.26",
-    "next": "^9.4.0",
-    "next-seo": "^4.4.0",
-    "randomcolor": "^0.5.4",
+    "dayjs": "^1.8.30",
+    "next": "^9.5.0",
+    "next-seo": "^4.7.3",
+    "randomcolor": "^0.6.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
     "recharts": "^1.8.5"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^9.4.0",
-    "@types/node": "^13.13.5",
-    "@types/react": "^16.9.35",
+    "@next/bundle-analyzer": "^9.5.0",
+    "@types/node": "^14.0.26",
+    "@types/react": "^16.9.43",
     "cross-env": "^7.0.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
-    "tailwindcss": "^1.4.6",
-    "typescript": "^3.8.3"
+    "tailwindcss": "^1.5.2",
+    "typescript": "^3.9.7"
   }
 }

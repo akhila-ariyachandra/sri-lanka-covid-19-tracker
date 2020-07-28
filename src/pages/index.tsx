@@ -1,13 +1,13 @@
-import Layout from "../components/Layout";
+import Layout from "src/components/Layout";
 import dynamic from "next/dynamic";
-import StatCard from "../components/StatCard";
+import StatCard from "src/components/StatCard";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-import HospitalCard from "../components/HospitalCard";
-const Graph = dynamic(() => import("../components/Graph"));
-import { NextPage, GetServerSideProps, GetStaticProps } from "next";
-import { api } from "../lib/api";
-import { apiData, GraphData } from "../lib/types";
+import HospitalCard from "src/components/HospitalCard";
+const Graph = dynamic(() => import("src/components/Graph"));
+import { NextPage, GetStaticProps } from "next";
+import { api } from "src/lib/api";
+import { apiData, GraphData } from "src/lib/types";
 import { NextSeo } from "next-seo";
 
 dayjs.extend(advancedFormat);
@@ -148,7 +148,7 @@ export const getStaticProps: GetStaticProps = async () => {
       // we will attempt to re-generate the page:
       // - when a request comes in
       // - at most once every hour
-      unstable_revalidate: 60 * 60,
+      revalidate: 60 * 60,
     };
   } catch (error) {
     console.log("> Error fetching data: ", error);
