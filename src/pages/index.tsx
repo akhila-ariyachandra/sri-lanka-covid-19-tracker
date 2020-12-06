@@ -30,6 +30,12 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
           title: "Sri Lanka COVID-19 Tracker",
           description: "COVID-19 Tracker for Sri Lanka",
         }}
+        additionalMetaTags={[
+          {
+            name: "monetization",
+            content: process.env.NEXT_PUBLIC_ILP_PAYMENT_POINTER,
+          },
+        ]}
       />
 
       <h1 className="text-5xl text-bold">Sri Lanka COVID-19 Tracker</h1>

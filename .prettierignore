@@ -8,3 +8,6 @@ out
 # Auto generated PWA files
 public/sw*
 public/workbox*
+
+# Vercel
+.vercel

@@ -12,21 +12,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" type="image/png" href="/virus.png" />
 
-          {/* Global site tag (gtag.js) - Google Analytics */}
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-137864394-3"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'UA-137864394-3');`,
-            }}
-          />
+          <script async data-api="/_hive" src="/bee.js" />
         </Head>
 
         <body>
