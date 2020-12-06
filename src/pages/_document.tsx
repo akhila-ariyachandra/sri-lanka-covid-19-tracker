@@ -15,7 +15,7 @@ class MyDocument extends Document {
           <script async data-api="/_hive" src="/bee.js" />
         </Head>
 
-        <body>
+        <body className="bg-gray-200">
           <Main />
           <NextScript />
         </body>

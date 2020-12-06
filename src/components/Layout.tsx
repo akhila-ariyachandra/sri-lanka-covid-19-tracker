@@ -3,10 +3,10 @@ import { FaGithub } from "react-icons/fa";
 
 const Layout: React.FunctionComponent = ({ children }) => {
   return (
-    <div className="p-4 bg-gray-200">
-      <main className="container grid grid-cols-1 gap-2">{children}</main>
+    <div className="p-4 max-w-5xl mx-auto">
+      <main className="grid grid-cols-1 gap-2">{children}</main>
 
-      <footer className="container mt-5 flex items-center text-base text-lg">
+      <footer className="mt-5 flex items-center text-base sm:text-lg">
         <div className="flex-1">
           <p>
             Created by{" "}
