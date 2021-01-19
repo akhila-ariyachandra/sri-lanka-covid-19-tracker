@@ -11,8 +11,6 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="shortcut icon" type="image/png" href="/virus.png" />
-
-          <script async data-api="/_hive" src="/bee.js" />
         </Head>
 
         <body className="bg-gray-200">
