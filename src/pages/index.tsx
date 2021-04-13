@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import HospitalCard from "src/components/HospitalCard";
 const Graph = dynamic(() => import("src/components/Graph"));
-import { NextPage, GetStaticProps, GetServerSideProps } from "next";
+import { NextPage, GetStaticProps } from "next";
 import { api } from "src/lib/api";
 import { apiData, GraphData } from "src/lib/types";
 import { NextSeo } from "next-seo";
@@ -133,11 +133,8 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
-    // https://vercel.com/blog/serverless-pre-rendering
-    res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
-
     const response = await api.get("/");
 
     const data = response.data.data as apiData;
@@ -154,6 +151,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         data,
         graphData,
       },
+      revalidate: 3600,
     };
   } catch (error) {
     console.log("> Error fetching data: ", error);

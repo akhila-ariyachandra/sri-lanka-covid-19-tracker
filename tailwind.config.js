@@ -1,19 +1,16 @@
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-    defaultLineHeights: true,
-    standardFontWeights: true,
-  },
+  mode: "jit",
   purge: [
-    "./src/pages/**/*.{js,jsx,ts,tsx}",
-    "./src/components/**/*.{js,jsx,ts,tsx}",
+    "./src/pages/**/*.tsx",
+    "./src/components/**/*.{tsx,js,css}",
+    "./src/styles/**/*.css",
   ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
-    container: {
-      center: true,
-    },
+    extend: {},
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [],
 };

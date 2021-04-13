@@ -13,7 +13,7 @@ class MyDocument extends Document {
           <link rel="shortcut icon" type="image/png" href="/virus.png" />
         </Head>
 
-        <body className="bg-gray-200">
+        <body className="bg-gray-50">
           <Main />
           <NextScript />
         </body>
