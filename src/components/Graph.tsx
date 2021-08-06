@@ -1,45 +1,57 @@
-import React from "react";
-import randomColor from "randomcolor";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
-import { GraphData } from "src/lib/types";
+import type { FC } from "react";
+import useData from "@/hooks/useData";
+import { getGraphData } from "@/lib/helpers";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
-type Props = {
-  data: GraphData[];
-};
+const Graph: FC = () => {
+  const { data } = useData();
+  const graphData = getGraphData(data);
 
-const Graph: React.FunctionComponent<Props> = ({ data }) => {
   return (
-    <>
-      <div className="bg-white rounded-lg shadow-lg p-5 col-span-1 sm:col-span-2 flex flex-col items-center">
-        <PieChart width={300} height={275}>
-          <Pie
-            data={data}
-            dataKey="value"
-            nameKey="name"
-            cx="50%"
-            cy="50%"
-            innerRadius={75}
-            outerRadius={100}
-            paddingAngle={1}
-            fill="#556cd6"
-            isAnimationActive={false}
-            label
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={randomColor({ luminosity: "dark" })}
-              />
-            ))}
-          </Pie>
+    <div className="w-full bg-white rounded-lg shadow-lg p-5">
+      <ResponsiveContainer width="100%" height={500}>
+        <LineChart
+          width={500}
+          height={300}
+          data={graphData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
+          <YAxis />
           <Tooltip />
-        </PieChart>
-
-        <h2 className="text-2xl">
-          People who are currently on treatment/observation for COVID-19
-        </h2>
-      </div>
-    </>
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="antigen"
+            stroke="#8884d8"
+            name="Antigen"
+            activeDot={{ r: 4 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="pcr"
+            stroke="#82ca9d"
+            name="PCR"
+            activeDot={{ r: 4 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

@@ -1,32 +1,29 @@
 import Layout from "src/components/Layout";
-import dynamic from "next/dynamic";
 import StatCard from "src/components/StatCard";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-import HospitalCard from "src/components/HospitalCard";
-const Graph = dynamic(() => import("src/components/Graph"));
+import useData from "@/hooks/useData";
+import Graph from "@/components/Graph";
 import { NextPage, GetStaticProps } from "next";
 import { api } from "src/lib/api";
-import { apiData, GraphData } from "src/lib/types";
+import { QueryClient } from "react-query";
+import { dehydrate } from "react-query/hydration";
 import { NextSeo } from "next-seo";
 
 dayjs.extend(advancedFormat);
 
-type Props = {
-  data: apiData;
-  graphData: GraphData[];
-};
-
 const Divider = () => <hr className="my-5 border-solid border-black" />;
 
-const Index: NextPage<Props> = ({ data, graphData }) => {
+const Index: NextPage = () => {
+  const { data } = useData();
+
   return (
     <Layout>
       <NextSeo
         title="Sri Lanka COVID-19 Tracker"
         description="COVID-19 Tracker for Sri Lanka"
         openGraph={{
-          url: "https://slcovid19.now.sh/",
+          url: "https://slcovid19.vercel.app/",
           title: "Sri Lanka COVID-19 Tracker",
           description: "COVID-19 Tracker for Sri Lanka",
         }}
@@ -50,7 +47,7 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
           className="underline text-green-800"
           href="https://hpb.health.gov.lk/en"
           target="_blank"
-          rel="noopnoopener noreferrerener"
+          rel="noopener noreferrer"
         >
           Health Promotion Bureau
         </a>
@@ -84,7 +81,13 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
 
       <Divider />
 
-      <h4 className="text-4xl">Global Cases</h4>
+      <h4 className="text-4xl my-5">Hospitals</h4>
+
+      <Graph />
+
+      <Divider />
+
+      <h4 className="text-4xl my-5">Global Cases</h4>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <StatCard
@@ -117,41 +120,23 @@ const Index: NextPage<Props> = ({ data, graphData }) => {
           description="Total global deaths due to COVID-19"
         />
       </div>
-
-      <Divider />
-
-      <h4 className="text-4xl">Hospitals</h4>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Graph data={graphData} />
-
-        {data.hospital_data.map((data) => (
-          <HospitalCard hospitalData={data} key={data.hospital_id} />
-        ))}
-      </div>
     </Layout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const response = await api.get("/");
+    const queryClient = new QueryClient();
 
-    const data = response.data.data as apiData;
-
-    const graphData: GraphData[] = data.hospital_data
-      .map((hospital) => ({
-        name: hospital.hospital.name,
-        value: hospital.treatment_total,
-      }))
-      .filter((data) => data.value !== 0);
+    await queryClient.prefetchQuery(["data"], () =>
+      api.get("/").then(({ data }) => data.data)
+    );
 
     return {
       props: {
-        data,
-        graphData,
+        dehydratedState: dehydrate(queryClient),
       },
-      revalidate: 3600,
+      revalidate: 60 * 60 * 24,
     };
   } catch (error) {
     console.log("> Error fetching data: ", error);

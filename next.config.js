@@ -16,7 +16,9 @@ module.exports = withBundleAnalyzer({
     return config;
   },
   future: {
-    webpack5: true,
     strictPostcssConfiguration: true,
+  },
+  eslint: {
+    dirs: ["src/components", "src/hooks", "src/lib", "src/pages"],
   },
 });
